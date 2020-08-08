@@ -6,7 +6,7 @@
         .title a {
             display: block;
             font-size:40px;
-            padding: 10px 0px 0px 10px;
+            padding: 10px 0px 0px 100px;
 	    background-color: green;
             color:black;
             font-weight:bold;
@@ -16,7 +16,7 @@
         .subtitle a {
             display: block;
             font-size:17px;
-	          padding: 0px 0px 10px 10px;
+	          padding: 0px 0px 10px 100px;
             text-align: left;
             text-decoration: none;
         }
@@ -30,7 +30,7 @@
             position: sticky;
             top: 0;
             background-color: black;
-            padding:10px 0px 10px 0px;
+            padding:10px 0px 10px 84px;
             color:white;
             margin: 0 auto;
             overflow: hidden;
@@ -54,11 +54,13 @@
             font-weight:bold;
         }
         .body_sec {
-            margin-left:30px;
-            margin-right:30px;
+            margin-left:200px;
+            margin-right:200px;
+            margin-top:60px;
             margin-bottom:60px;
             font-size:17px;
         }
+
     </style>
 </head>
 
@@ -79,21 +81,27 @@
 
     <!-- Body section -->
     <div class = "body_sec">
-      <section id="Intro">
-          <h3>Content section</h3>
-           <a target="_blank" rel="noopener noreferrer" href="Research Paper.pdf">Link to pdf</a>
-           <p>In this post, we will be going over what a 3D Convolutional Neural Network is and its applications, how it works, and how to implement one using Keras.
-           </p>
+      <h1 style="line-height: 70%">3D Convolutional Neural Network in Keras</h1>
+      <p style="font-size:19px"><i>In this post, we will be going over what a 3D Convolutional Neural Network is, how it works, and how to implement one using Keras.
+      </i></p1>
+      <section id="Contents">
+           <br><a target="_blank" rel="noopener noreferrer" href="Research Paper.pdf">Link to pdf of original paper</a><br>
+           <p><span style="font-size:18px; font-weight:bold;">Sections:</span>
+           <br><a href="#sec1">What is a Convolutional Neural Network?</a>
+           <br><a style="" href="#sec2">Convolutional Neural Network Architecture</a>
+           <br></p>
       </section>
-      <section id="What is CNN?">
-          <h2>What is a Convolutional Neural Network?</h2>
+      <hr>
+      <section style="padding-top:40px; margin-top:-50px;" id="sec1">
+          <h3>What is a Convolutional Neural Network?</h3>
           <p>Convolutional Neural Networks (CNNs) are a class of Artificial Neural Networks (ANNs) primarily used for problems involving image classification. Rather than using each pixel (or voxel in 3D) value as a feature as would happen with a standard fully-connected multilayer perceptron, CNNs connect each neuron to a small section of the prior layer, drastically reducing the number of parameters and, as a result, the amount of overfitting and computational power. This process is done through the use of learnable filters and convolutions, hence the name CNN.
           </p>
           <p>Convolutional Neural Networks have become increasingly popular in the medical field due to their effectiveness in image analysis. They have been used throughout literature for tasks such as image segmentation, disease classification, abnormality detection, and computer aided diagnosis. For our purposes, we will be using a 3D Convolutional Neural Network to diagnose Parkinson’s Disease (PD) using 871 DaTscan SPECT brain images from the PPMI database.
           </p>
       </section>
-      <section id="CNN Architecture">
-          <h2>Convolutional Neural Network Architecture</h2>
+      <hr>
+      <section style="padding-top:40px; margin-top:-50px;" id="sec2">
+          <h3>Convolutional Neural Network Architecture</h3>
           <p>A standard Convolutional Neural Network architecture consists of convolutional layers, pooling layers, and dense layers. In general, the input images go through a series of convolutional layers and a pooling of the activations, followed by dense layers which make the classification. There are many variations of CNNs currently in practice such as AlexNet, ResNet, GoogLeNet, and VGGNet. The learning process is done through backpropagation, in which the gradient of the error function is calculated with respect to the network’s weights. Through gradient descent, the error is minimized by updating the weights.
           </p>
           <h4>3D Convolutional Layer</h4>
@@ -119,6 +127,7 @@
           <h4>Batch Normalization</h4>
           <p>Batch Normalization is a technique developed to address the problem of internal covariate shift, in which training of deep learning models becomes less efficient due to the need to adapt to new input distributions as parameters are changed. Batch Normalization makes normalization a part of the model architecture, applying the operation for each training mini-batch and conforming the activations at each point in the network to a unit gaussian distribution. There is some debate as to whether the effectiveness of Batch Normalization is a result of reducing internal covariate shift or if there are more significant impacts, such as the smoothening of the optimization landscape, which create more stable and traversable gradients. Nevertheless, the use of mini-batch statistics for normalization has been proven to improve the training process, not only in the efficiency of convergence during training, but also through regularizing properties as a result of the influence of the whole mini-batch on each individual training element, and is now widely used in practice. In the original paper, Batch Normalization was designed to be used in between the fully connected or convolutional layers and their activations, but there is some confusion as to whether better results are achieved with Batch Normalization used after the non-linearity. We achieved slightly better results with the use of Batch Normalization before the activation functions. We will use Batch Normalization following each convolutional layer.
           </p>
+          <img src="PD-CNN Model.jpg" alt=error>
       </section>
     </div>
 

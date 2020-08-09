@@ -7,7 +7,7 @@
             display: block;
             font-size:40px;
             padding: 10px 0px 0px 100px;
-	    background-color: green;
+	    background-color: grey;
             color:black;
             font-weight:bold;
             text-align: left;
@@ -21,6 +21,7 @@
             text-decoration: none;
         }
         body {
+            background-color: grey;
             margin: 0 auto;
             background-position:center;
             background-size: contain;
@@ -42,6 +43,9 @@
             text-decoration: none;
             font-size: 20px;
         }
+        .menu a:hover {
+            background-color: #595959;
+        }
         footer {
             width: 100%;
             bottom: 0px;
@@ -54,10 +58,13 @@
             font-weight:bold;
         }
         .body_sec {
-            margin-left:200px;
-            margin-right:200px;
-            margin-top:60px;
-            margin-bottom:60px;
+            background-color: white;
+            margin-left:180px;
+            margin-right:180px;
+            padding-top:40px;
+            padding-right:20px;
+            padding-left:20px;
+            padding-bottom:60px;
             font-size:17px;
         }
 
@@ -127,7 +134,7 @@
           <h4>Batch Normalization</h4>
           <p>Batch Normalization is a technique developed to address the problem of internal covariate shift, in which training of deep learning models becomes less efficient due to the need to adapt to new input distributions as parameters are changed. Batch Normalization makes normalization a part of the model architecture, applying the operation for each training mini-batch and conforming the activations at each point in the network to a unit gaussian distribution. There is some debate as to whether the effectiveness of Batch Normalization is a result of reducing internal covariate shift or if there are more significant impacts, such as the smoothening of the optimization landscape, which create more stable and traversable gradients. Nevertheless, the use of mini-batch statistics for normalization has been proven to improve the training process, not only in the efficiency of convergence during training, but also through regularizing properties as a result of the influence of the whole mini-batch on each individual training element, and is now widely used in practice. In the original paper, Batch Normalization was designed to be used in between the fully connected or convolutional layers and their activations, but there is some confusion as to whether better results are achieved with Batch Normalization used after the non-linearity. We achieved slightly better results with the use of Batch Normalization before the activation functions. We will use Batch Normalization following each convolutional layer.
           </p>
-          <img src="PD-CNN Model.jpg" alt=error>
+          <img style="height: 100%; width: 100%;" src="PD-CNN Model.jpg" alt="image error">
       </section>
     </div>
 

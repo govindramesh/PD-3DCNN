@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Govind Ramesh</title>
+    <link rel="stylesheet" href="gistStyle.css">
     <style>
         .title a {
             display: block;
@@ -33,6 +34,7 @@
             background-color: black;
             padding:0px 0px 0px 84px;
             color:white;
+            z-index: 100;
         }
         .menu a {
             display:inline-block;
@@ -135,6 +137,7 @@
            <p><br><span style="font-size:18px; font-weight:bold;">Sections:</span>
            <br><a href="#sec1">What is a Convolutional Neural Network?</a>
            <br><a style="" href="#sec2">Convolutional Neural Network Architecture</a>
+           <br><a style="" href="#sec3">Preprocessing</a>
            <br></p>
       </section>
       <hr>
@@ -173,7 +176,24 @@
           <h4>Batch Normalization</h4>
           <p>Batch Normalization is a technique developed to address the problem of internal covariate shift, in which training of deep learning models becomes less efficient due to the need to adapt to new input distributions as parameters are changed. Batch Normalization makes normalization a part of the model architecture, applying the operation for each training mini-batch and conforming the activations at each point in the network to a unit gaussian distribution. There is some debate as to whether the effectiveness of Batch Normalization is a result of reducing internal covariate shift or if there are more significant impacts, such as the smoothening of the optimization landscape, which create more stable and traversable gradients. Nevertheless, the use of mini-batch statistics for normalization has been proven to improve the training process, not only in the efficiency of convergence during training, but also through regularizing properties as a result of the influence of the whole mini-batch on each individual training element, and is now widely used in practice. In the original paper, Batch Normalization was designed to be used in between the fully connected or convolutional layers and their activations, but there is some confusion as to whether better results are achieved with Batch Normalization used after the non-linearity. We achieved slightly better results with the use of Batch Normalization before the activation functions. We will use Batch Normalization following each convolutional layer.
           </p>
-          <img style="height: 100%; width: 100%;" src="PD-CNN Model.jpg" alt="image error">
+          <br>
+          <img style="height: 75%; width: 75%; display: block; margin-left: auto; margin-right: auto;" src="PD-CNN Model.jpg" alt="image error">
+          <p style="font-size:12px; text-align:center; margin-left: 90px; margin-right: 90px;">Architecture of 3D Convolutional Neural Network: L<sub>1,4,7</sub>: 3D convolutional layers; L<sub>2,5,8</sub>: Batch Normalization; L<sub>3,6,9</sub>: max pooling; L<sub>10,11,12</sub>: dense layers; L<sub>13</sub>: output layer. (A) Full CNN framework without added features. (B) Simplified CNN framework demonstrating implementation of added features.
+          </p>
+      </section>
+      <hr>
+      <section style="padding-top:40px; margin-top:-50px;" id="sec3">
+        <h3>Preprocessing</h3>
+        <p>In this section, we will describe the preprocessing steps taken before using the data in the 3D Convolutional Neural Network. The preprocessing was done using Jupyter Notebook on files downloaded from the PPMI database containing DaTscan SPECT images. Unfortunately, the PPMI data is for research purposes and can only be acquired by request, but the ideas in this section can still be applied to other datasets.
+        <br><br>The libraries needed for our purposes are shown here:
+        </p>
+        <script src="https://gist.github.com/govindramesh/0332eb7093ef2d52da15a545884a9ee9.js"></script>
+        <p><br>When downloading the DICOM (.dcm) files from the PPMI database, I stored them in two separate folders: NC (normal controls) and PD (Parkinson’s Disease). The variable ‘TYPE’ is used to call each folder separately so when we export them to .npy files at the end, the classes are separated. We use os.walk and pydicom to read and append each slice of the 3D DaTscan SPECT images to a list, ‘scans’. For Macs, we also need to make sure we don’t pick up any .DS_Store hidden files.
+        </p>
+        <script src="https://gist.github.com/govindramesh/3baae659ee8449b3cc813f09e04b5426.js"></script>
+        <p><br>DICOM files contain more than just the DaTscan SPECT images. For our purposes we only need the 3D arrays representing the DaTscan SPECT images, so we extract them to a list.
+        </p>
+        <script src="https://gist.github.com/govindramesh/bd0df125deeb1247f9225d3553b22358.js"></script>
       </section>
     </div>
 
